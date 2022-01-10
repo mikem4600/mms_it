@@ -1,0 +1,577 @@
+/*
+* ============================================================================
+*  Name     : MMS_It.rss
+*  Part of  : MMS_It
+*  Created  : 29/9/2003 by Makidis Michael
+*  Description:
+*     This file contains resources for the MMS_It.
+*  Copyright: Makidis Michael 2003-2005
+* ============================================================================
+*/
+
+//  RESOURCE IDENTIFIER
+NAME    AWIZ // 4 letter ID
+
+CHARACTER_SET UTF8
+
+//  INCLUDES
+
+#include <eikon.rh>
+#include "mms_it.hrh"
+#include "mms_it.loc"
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+// for common dialogs
+#include <CommonDialogs.hrh>
+#include <CommonDialogs.rh>
+
+//  CONSTANTS  
+//#define ?constant   ?value
+
+
+//  MACROS  
+//#define ?macro
+
+
+//  RESOURCE DEFINITIONS 
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="MMS_It"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    status_pane = r_mms_it_status_pane;
+    }
+
+
+RESOURCE TBUF r_mms_it_help
+    { 
+    buf=qtn_help;
+    }
+
+RESOURCE TBUF r_mms_it_help_about
+    { 
+    buf=qtn_help_about;
+    }
+
+RESOURCE TBUF r_message_sent
+    { 
+    buf=qtn_message_sent;
+    }
+
+RESOURCE TBUF r_file_not_found
+    { 
+    buf=qtn_file_not_found;
+    }
+
+RESOURCE TBUF r_no_attachments
+    { 
+    buf=qtn_no_attachments;
+    }
+
+RESOURCE TBUF r_attachment_not_found
+    { 
+    buf=qtn_attachment_not_found;
+    }
+
+RESOURCE TBUF r_smil_attachment_not_found
+    { 
+    buf=qtn_smil_attachment_not_found;
+    }
+
+
+RESOURCE TBUF r_set_root
+    { 
+    buf=qtn_set_root;
+    }
+
+RESOURCE TBUF r_remove_attachment
+    { 
+    buf=qtn_remove_attachment ;
+    }
+
+RESOURCE TBUF r_default_mime_type
+    { 
+    buf=qtn_default_mime_type ;
+    }
+
+RESOURCE TBUF r_att
+    { 
+    buf=qtn_att ;
+    }
+
+RESOURCE TBUF r_nothing_attached
+    { 
+    buf=qtn_nothing_attached ;
+    }
+
+RESOURCE TBUF r_no_subject
+    { 
+    buf=qtn_no_subject ;
+    }
+
+RESOURCE TBUF r_no_smil
+    { 
+    buf=qtn_no_smil ;
+    }
+
+
+//----------------------------------------------------
+//   
+//    r_mms_it_hotkeys
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE HOTKEYS r_mms_it_hotkeys
+    {
+    control=
+        {
+        HOTKEY { command=EAknCmdExit; key='e'; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_view1
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_mms_it_view1
+    {
+    hotkeys=r_mms_it_hotkeys;
+    menubar=r_mms_it_menubar_view1;  
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;    
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_menubar_view1
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_mms_it_menubar_view1
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_mms_it_app_menu; txt="App"; },
+        MENU_TITLE { menu_pane=r_mms_it_view1_menu; txt="View"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_view1_menu
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_mms_it_view1_menu
+    {
+    items=
+        {
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_view2
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_mms_it_view2
+    {
+    hotkeys=r_mms_it_hotkeys;
+    menubar=r_mms_it_menubar_view2;  
+    cba=R_AVKON_SOFTKEYS_OPTIONS_EXIT;    
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_menubar_view2
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_mms_it_menubar_view2
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_mms_it_app_menu; txt="App"; },
+        MENU_TITLE { menu_pane=r_mms_it_view2_menu; txt="View"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_view2_menu
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_mms_it_view2_menu
+    {
+    items=
+        {
+		MENU_ITEM { command=EShowAttachments; txt = qtn_show_attachments; },
+		MENU_ITEM { command=ESend; txt = qtn_send; },
+		MENU_ITEM { command=EDoNothing; txt = qtn_advanced;
+					cascade = r_mms_it_advanced;}
+        };
+    }
+
+RESOURCE MENU_PANE r_mms_it_advanced
+    {
+    items=
+        {
+		MENU_ITEM { command=EEditSubject; txt = qtn_edit_subject; },
+		MENU_ITEM { command=ERemoveSubject; txt = qtn_remove_subject; },
+		MENU_ITEM { command=ESetSMILRoot; txt = qtn_set_smil_root;},
+		MENU_ITEM { command=ESetDefaultSMIL; txt = qtn_set_default_smil;},
+		MENU_ITEM { command=ESendwManualAddr; txt = qtn_send_w_manual_addr;}
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_view3
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE AVKON_VIEW r_mms_it_view3
+    {
+    hotkeys=r_mms_it_hotkeys;
+    menubar=r_mms_it_menubar_view3;  
+    cba=R_AVKON_SOFTKEYS_OPTIONS_BACK;    
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_menubar_view3
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_BAR r_mms_it_menubar_view3
+    {
+    titles=
+        {
+        MENU_TITLE { menu_pane=r_mms_it_app_menu; txt="App"; },
+        MENU_TITLE { menu_pane=r_mms_it_view3_menu; txt="View"; }
+        };
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_view3_menu
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_mms_it_view3_menu
+    {
+    items=
+        {
+		MENU_ITEM { command=EAddAttachment; txt = qtn_add_attachment; },
+		MENU_ITEM { command=ERemoveAttachment; txt = qtn_remove_attachment;},
+		MENU_ITEM { command=ERemoveAllAttachments; txt = qtn_remove_all;},
+		MENU_ITEM { command=EDoNothing; txt = qtn_advanced;
+					cascade = r_mms_it_attach_advanced;},
+		MENU_ITEM { command=EShowBody; txt = qtn_show_body; },
+		MENU_ITEM { command=ESend; txt = qtn_send; }
+        };
+    }
+
+RESOURCE MENU_PANE r_mms_it_attach_advanced
+    {
+    items=
+        {
+		MENU_ITEM { command=EEditMime; txt = qtn_edit_mime; },
+		MENU_ITEM { command=ESetDefaultMime; txt = qtn_set_default_mime; },
+		MENU_ITEM { command=EDoNothing; txt = qtn_img_mime; 
+					cascade = r_mms_it_img_mime;},
+		MENU_ITEM { command=EDoNothing; txt = qtn_snd_mime; 
+					cascade = r_mms_it_snd_mime;},
+		MENU_ITEM { command=EDoNothing; txt = qtn_vid_mime; 
+					cascade = r_mms_it_vid_mime;},
+		MENU_ITEM { command=EAddAttachmentManually; txt = qtn_add_attachment_manually; }
+        };
+    }
+
+RESOURCE MENU_PANE r_mms_it_img_mime
+    {
+    items=
+        {
+		MENU_ITEM { command=EMIMEImgJpeg; txt = "image/jpeg";},
+		MENU_ITEM { command=EMIMEImgPng; txt = "image/png"; },
+		MENU_ITEM { command=EMIMEImgGif; txt = "image/gif"; }
+		};
+    }
+
+RESOURCE MENU_PANE r_mms_it_snd_mime
+    {
+    items=
+        {
+		MENU_ITEM { command=EMIMEAudMidi; txt = "audio/midi"; },
+		MENU_ITEM { command=EMIMEAudSPMidi; txt = "audio/sp-midi";},
+		MENU_ITEM { command=EMIMEAudAMR; txt = "audio/amr"; },
+		MENU_ITEM { command=EMIMEAudMpeg; txt = "audio/mpeg"; }
+		};
+    }
+
+RESOURCE MENU_PANE r_mms_it_vid_mime
+    {
+    items=
+        {
+		MENU_ITEM { command=EMIMEVid3GPP; txt = "video/3gpp"; },
+		MENU_ITEM { command=EMIMEVidMpeg; txt = "video/mpeg";}
+		};
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_app_menu
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE MENU_PANE r_mms_it_app_menu
+    {
+    items=
+        {
+	MENU_ITEM { command=ENewMessage; txt = qtn_new_message; },
+        MENU_ITEM { command=EDisplayHelp; txt = qtn_help_about; },
+        MENU_ITEM { command=EExit; txt=qtn_help_exit; }
+        };
+    }
+
+RESOURCE STATUS_PANE_APP_MODEL r_mms_it_status_pane
+    {
+	panes=
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidNavi;
+			type = EAknCtNaviPane;
+			resource = r_mms_it_navi_decorator;
+			}
+		};
+    }
+
+//----------------------------------------------------
+//   
+//    r_mms_it_navi_decorator
+//    ?description
+//
+//----------------------------------------------------
+//
+RESOURCE NAVI_DECORATOR r_mms_it_navi_decorator
+	{
+	type = ENaviDecoratorControlNone;
+	}
+
+RESOURCE DIALOG r_message_query
+	{
+	flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+	items=
+		{
+		DLG_LINE 
+			{
+			type = EAknCtPopupHeadingPane;
+			id = EAknMessageQueryHeaderId;
+			control = AVKON_HEADING
+				{
+				};
+		},
+		DLG_LINE
+			{
+			type = EAknCtMessageQuery;
+			id = EAknMessageQueryContentId;
+			control = AVKON_MESSAGE_QUERY
+				{
+				};
+			}
+		};
+	}
+
+RESOURCE DIALOG r_mms_it_tel_number_dialog
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY 
+                { 
+                layout = EDataLayout;
+                label = qtn_enter_recipient;
+                control = EDWIN
+                    { 
+                    flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable; 
+                    maxlength = 100; 
+                    width = 5; 
+                    lines = 1; 
+                    };
+                };
+            }
+        };
+
+    }
+
+RESOURCE DIALOG r_mms_it_file_dialog
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY 
+                { 
+                layout = EDataLayout;
+                label = qtn_enter_filename;
+                control = EDWIN
+                    { 
+                    flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable; 
+                    maxlength = 255; 
+                    width = 5; 
+                    lines = 1; 
+                    };
+                };
+            }
+        };
+
+    }
+
+RESOURCE DIALOG r_mms_it_mime_dialog
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY 
+                { 
+                layout = EDataLayout;
+                label = qtn_enter_mimetype;
+                control = EDWIN
+                    { 
+                    flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable | EEikEdwinOnlyASCIIChars;
+                    avkon_flags = EAknEditorFlagNoT9 | EAknEditorFlagLatinInputModesOnly ;
+                    maxlength = 40; 
+                    width = 5; 
+                    lines = 1; 
+                    };
+                };
+            }
+        };
+
+    }
+
+RESOURCE DIALOG r_mms_it_subject_dialog
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY 
+                { 
+                layout = EDataLayout;
+                label = qtn_enter_subject;
+                control = EDWIN
+                    { 
+                    flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable; 
+                    maxlength = 100; 
+                    width = 5; 
+                    lines = 1; 
+                    };
+                };
+            }
+        };
+
+    }
+
+RESOURCE DIALOG r_mms_it_smil_dialog
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY 
+                { 
+                layout = EDataLayout;
+                label = qtn_enter_smil;
+                control = EDWIN
+                    { 
+                    flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable; 
+                    maxlength = 255; 
+                    width = 5; 
+                    lines = 1; 
+                    };
+                };
+            }
+        };
+
+    }
+
+
+RESOURCE FILESELECTIONDIALOG r_file_selection_dialog
+{
+	title = qtn_select_file;
+	/*root_path = "C:\\nokia\\";
+	default_folder = "C:\\nokia\\images\\";
+	filters =
+		{
+			FILTER 
+			{
+				filter_type = EFilenameFilter;
+				filter_style = EInclusiveFilter;
+				filter_data = {"*.jpg", "*.gif", "*.bmp"};
+			}
+		};*/
+}
+
+RESOURCE DIALOG r_mms_it_confirm_exit_dialog
+  {
+  flags = EGeneralQueryFlags;
+  buttons = R_AVKON_SOFTKEYS_YES_NO;
+  items =
+    {
+    DLG_LINE
+      {
+      type = EAknCtQuery;
+      id = EGeneralQuery;
+      control = AVKON_CONFIRMATION_QUERY
+        {
+        layout = EConfirmationQueryLayout;
+        label = qtn_confirm_exit;
+        };
+      }
+    };
+  }
+            
+// End of File

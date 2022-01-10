@@ -1,0 +1,34 @@
+;
+; Installation file for MMS_It application
+;
+;Languages
+&EN,EL
+;
+; UID is the app's UID
+; Please request a UID from Symbian
+;
+#{"MMS It!","MMS It!"},(0x0767A5B9),1,02,0
+;
+;Supports Series 60 v 2.0
+;This line indicates that this installation is for the Series 60 platform v2.0
+;This line must appear _exactly_ as shown below in the sis file
+;If this line is missing or incorrect, the sis file will not be able
+;to be installed on Series 60 v2.0 platforms
+(0x101F7960), 0, 0, 0, {"Series60ProductID","Series60ProductID"} 
+;
+; License file
+;
+{
+"license.txt"
+"licensegr.txt"
+}-"",FT,TA
+;
+; Files to install
+;
+"\Symbian\7.0s\Series60_v20\Epoc32\data\z\system\apps\MMS_It\MMS_It.r01"         -"!:\system\apps\MMS_It\MMS_It.r01"
+"\Symbian\7.0s\Series60_v20\Epoc32\data\z\system\apps\MMS_It\MMS_It_caption.r01" -"!:\system\apps\MMS_It\MMS_It_caption.r01"
+"\Symbian\7.0s\Series60_v20\Epoc32\data\z\system\apps\MMS_It\MMS_It.r54"         -"!:\system\apps\MMS_It\MMS_It.r54"
+"\Symbian\7.0s\Series60_v20\Epoc32\data\z\system\apps\MMS_It\MMS_It_caption.r54" -"!:\system\apps\MMS_It\MMS_It_caption.r54"
+"\Symbian\7.0s\Series60_v20\Epoc32\data\z\system\apps\MMS_It\MMS_It.aif"         -"!:\system\apps\MMS_It\MMS_It.aif"
+"\Symbian\7.0s\Series60_v20\Epoc32\data\z\system\apps\MMS_It\MMS_It.mbm"         -"!:\system\apps\MMS_It\MMS_It.mbm"
+"\Symbian\7.0s\Series60_v20\Epoc32\release\armi\urel\MMS_It.app"         -"!:\system\apps\MMS_It\MMS_It.app"
